@@ -38,3 +38,6 @@ class Bml(CMakePackage):
 
     depends_on("blas")
     depends_on("lapack")
+
+    def cmake_args(self):
+        return ['-DBUILD_SHARED_LIBS=ON']

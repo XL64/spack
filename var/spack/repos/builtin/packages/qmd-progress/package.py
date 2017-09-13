@@ -47,6 +47,7 @@ class QmdProgress(CMakePackage):
     def cmake_args(self):
         spec = self.spec
         args = ['-DCMAKE_Fortran_FLAGS=-ffree-line-length-none']
+        args.append('-DBUILD_SHARED_LIBS=ON')
         if '+mpi' in spec:
             args.append('-DPROGRESS_MPI=yes')
             args.append('-DCMAKE_C_COMPILER=%s' % spec['mpi'].mpicc)

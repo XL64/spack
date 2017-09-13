@@ -34,13 +34,25 @@ class Latte(CMakePackage):
 
     version('develop', git='https://github.com/lanl/latte', branch='master')
 
+    variant('mpi', default=True,
+            description='Build with mpi')
+    variant('progress', default=False,
+            description='Use progress for fast')
+
     depends_on("cmake@3.1:", type='build')
     depends_on('blas')
     depends_on('lapack')
+    depends_on('mpi', when='+mpi')
+    depends_on('qmd-progress', when='+progress')
 
     root_cmakelists_dir = 'cmake'
 
     def cmake_args(self):
         options = ['-DBUILD_SHARED_LIBS=ON']
+
+        if '+mpi' in spec:
+            options.append('-DO_MPI=yes')
+        if '+progres' in spec:
+            options.append('-DPROGRESS=yes')
 
         return options
