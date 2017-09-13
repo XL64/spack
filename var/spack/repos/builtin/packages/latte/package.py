@@ -29,10 +29,10 @@ from spack import *
 class Latte(CMakePackage):
     """Open source density functional tight binding molecular dynamics."""
 
-    homepage = "https://gitlab.com/exaalt/latte"
-    url      = "https://gitlab.com/exaalt/latte/tags/v1.0"
+    homepage = "https://github.com/lanl/latte"
+    url      = "https://github.com/lanl/latte/tarball/v1.0"
 
-    version('develop', git='https://gitlab.com/exaalt/latte', branch='cmake')
+    version('develop', git='https://github.com/lanl/latte', branch='master')
 
     depends_on("cmake@3.1:", type='build')
     depends_on('blas')
